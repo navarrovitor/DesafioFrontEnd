@@ -1,0 +1,21 @@
+<div class="card-body">
+  <div class="row">
+    <div class="col-md-2">Chutes disponíveis: {{ this.chutes }}</div>
+    <div class="col-md-4">
+      <div class="card">
+        <table class="table">
+          <tbody *ngFor="let letra of palavra">
+            <td>_ </td>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Digite uma letra" />
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button">Ok</button>
+    </div>
+  </div>
+</div>

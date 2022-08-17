@@ -1,1 +1,17 @@
-<p>game works!</p>
+<div class="card">
+  <div class="card-header">
+    {{ title }}
+  </div>
+  <div class="card-body">
+    <gg-word></gg-word>
+  </div>
+  <div class="card-footer">
+    <button
+      class="btn btn-outline-secondary"
+      style="width: 80px"
+      (click)="onBack()"
+    >
+      <i class="fa fa-chevron-left"></i>Voltar
+    </button>
+  </div>
+</div>
