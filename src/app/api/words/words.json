@@ -1,0 +1,6 @@
+[
+  { "word": "banana", "numberOfLetters": 6 },
+  { "word": "avestruz", "numberOfLetters": 8 },
+  { "word": "macaco", "numberOfLetters": 6 },
+  { "word": "computador", "numberOfLetters": 10 }
+]

@@ -1,0 +1,47 @@
+<div class="card">
+  <div class="card-header">
+    {{ title }}
+  </div>
+  <div class="card-body">
+    <div class="container-fluid">
+      <div class="text-center">
+        <h2>Esse é o jogo de adivinhação de palavras!</h2>
+        <h5>As regras são bem simples</h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            Você terá um número de chutes errados, que será equivalente ao dobro
+            do tamanho da palavra
+          </li>
+          <li class="list-group-item">
+            Se você acertar uma letra, ela será revelada na posição certa
+          </li>
+          <li class="list-group-item">
+            O número de chutes restantes aparecerá no painel, junto com as
+            letras erradas
+          </li>
+          <li class="list-group-item">
+            Se você acertar a palavra, você ganha
+            <i class="fa-regular fa-face-grin-beam"></i>
+          </li>
+          <li class="list-group-item">
+            Se você acabar com o seu número de chutes restantes, você perde
+            <i class="fa-regular fa-face-sad-tear"></i>
+          </li>
+          <li class="list-group-item">
+            <h6>
+              Mas não se preocupe, você sempre pode começar um novo jogo
+              clicando no botão "Novo jogo"
+            </h6>
+          </li>
+        </ul>
+        <a
+          class="btn btn-outline-primary"
+          routerLinkActive="active"
+          routerLink="/game"
+        >
+          Novo jogo
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
