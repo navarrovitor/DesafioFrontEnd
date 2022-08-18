@@ -1,21 +1,36 @@
+<div>
+  {{ this.palavra.inteira }}
+</div>
 <div class="card-body">
+  <section class="d-flex flex-row justify-content-between align-items-center">
+    <div class="">
+      <span>Chutes disponíveis: {{ this.chutes }}</span>
+    </div>
+    <div class="d-flex flex-wrap">
+      <div><i class="fa-solid fa-skull-crossbones"></i> Erros</div>
+    </div>
+  </section>
   <div class="row">
-    <div class="col-md-2">Chutes disponíveis: {{ this.chutes }}</div>
-    <div class="col-md-4">
-      <div class="card">
-        <table class="table">
-          <tbody *ngFor="let letra of palavra">
-            <td>_ </td>
-          </tbody>
-        </table>
-      </div>
+    <div class="text-center">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td *ngFor="let letra of palavra.separada">
+              <span *ngIf="palavra.acertadas[palavra.inteira.indexOf(letra)]">
+                {{ letra }}
+              </span>
+              <span *ngIf="!palavra.acertadas[palavra.inteira.indexOf(letra)]">
+                <i class="fa-solid fa-xmark"></i>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
   <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Digite uma letra" />
-    <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button">Ok</button>
-    </div>
+    <input class="form-control" placeholder="Digite uma letra" required />
+    <button (click)="confereLetra('a')">Clique aqui</button>
   </div>
 </div>
