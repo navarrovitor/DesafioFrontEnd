@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IWord } from './word';
+import * as dicionario from '../_files/dicionario.json';
 
 @Component({
   selector: 'gg-word',
   templateUrl: './word.component.html',
 })
 export class WordComponent implements OnInit {
-  dicionario: string[] = ['BANANA', 'AVESTRUZ', 'MACACO', 'COMPUTADOR'];
+  dicionario: string[] = dicionario;
   palavra: IWord = { inteira: '', separada: [], acertadas: [] };
   tamanhoPalavra: number = 0;
   chutes: number = 50;
@@ -43,8 +44,11 @@ export class WordComponent implements OnInit {
   }
 
   confereLetra(letra: string) {
-    if (letra === '') {
-      alert('Insira uma letra');
+    if (
+      ['', null].includes(letra) ||
+      this.erros.includes(letra.toUpperCase())
+    ) {
+      alert('Você precisa inserir uma letra nova!');
       return;
     }
     letra = letra.toUpperCase();

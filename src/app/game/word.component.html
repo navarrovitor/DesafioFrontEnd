@@ -55,9 +55,15 @@
         class="form-control"
         minlength="1"
         maxlength="1"
+        autofocus
         ngModel
       />
-      <input type="button" value="Ok" class="btn btn-primary" />
+      <input
+        type="button"
+        value="Ok"
+        class="btn btn-primary"
+        (click)="onSubmit(input)"
+      />
     </form>
   </div>
 </div>

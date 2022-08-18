@@ -12,9 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     RouterModule.forRoot([
-      { path: 'welcome', component: WelcomeComponent },
-      { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-      { path: '**', redirectTo: 'welcome', pathMatch: 'full' },
+      { path: 'regras', component: WelcomeComponent },
+      { path: '', redirectTo: 'regras', pathMatch: 'full' },
+      { path: '**', redirectTo: 'regras', pathMatch: 'full' },
     ]),
     HttpClientModule,
     GameModule,
