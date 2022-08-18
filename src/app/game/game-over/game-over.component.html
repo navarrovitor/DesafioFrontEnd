@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="card-header">
+    <h3>{{ title }}</h3>
+  </div>
+  <div class="card-body">
+    <div class="container-fluid">
+      <div class="text-center">
+        <div *ngIf="!win">
+          <h3>Você não conseguiu acertar a palavra</h3>
+          <h3><i class="fa-solid fa-heart-crack"></i></h3>
+          <h5>Mas não se preocupe!</h5>
+          <h5>Você pode tentar de novo se quiser</h5>
+        </div>
+        <div *ngIf="win">
+          <h3>Você conseguiu acertar a palavra</h3>
+          <h3><i class="fa-solid fa-heart"></i></h3>
+          <h5>Você é muito bom nisso!</h5>
+          <h5>Você pode até tentar de novo se quiser</h5>
+        </div>
+        <div class="d-flex justify-content-around justify-content-lg-around">
+          <a
+            class="btn btn-outline-primary"
+            routerLinkActive="active"
+            routerLink="/welcome"
+          >
+            Como Jogar
+          </a>
+          <a
+            class="btn btn-primary"
+            routerLinkActive="active"
+            routerLink="/game"
+          >
+            Novo Jogo
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

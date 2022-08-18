@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { IWord } from './word';
 
 @Component({
   selector: 'gg-word',
   templateUrl: './word.component.html',
-  // styleUrls: ['./word.component.css'],
 })
 export class WordComponent implements OnInit {
   dicionario: string[] = ['BANANA', 'AVESTRUZ', 'MACACO', 'COMPUTADOR'];
@@ -13,6 +13,8 @@ export class WordComponent implements OnInit {
   tamanhoPalavra: number = 0;
   chutes: number = 50;
   erros: string[] = [];
+
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.initializeIWord();
@@ -54,12 +56,21 @@ export class WordComponent implements OnInit {
         this.erros.push(letra);
       }
       if (--this.chutes === 0) {
-        console.log('xiiii');
+        this.fimDeJogo(false);
       }
     } else {
       indices.forEach((i) => {
         this.palavra.acertadas[Number(i)] = true;
       });
     }
+    if (this.palavra.acertadas.every((v) => v === true)) {
+      this.fimDeJogo(true);
+    }
+  }
+
+  fimDeJogo(ganhou: boolean) {
+    ganhou
+      ? this.router.navigate(['/gameover/win'])
+      : this.router.navigate(['/gameover/lose']);
   }
 }

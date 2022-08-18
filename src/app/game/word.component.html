@@ -3,15 +3,19 @@
     <section class="d-flex flex-row justify-content-between align-items-center">
       <div class="w-25 text-center">
         <div>
-          <i class="fa-solid fa-up-long"></i> Chutes disponíveis
-          <i class="fa-solid fa-down-long"></i>
+          <h4>
+            <i class="fa-solid fa-up-long"></i> Tentativas
+            <i class="fa-solid fa-down-long"></i>
+          </h4>
         </div>
         <h3>{{ this.chutes }}</h3>
       </div>
       <div class="d-flex flex-column w-25 text-center">
         <div>
-          <i class="fa-solid fa-skull-crossbones"></i> Chutes errados
-          <i class="fa-solid fa-skull-crossbones"></i>
+          <h4>
+            <i class="fa-solid fa-skull-crossbones"></i> Chutes errados
+            <i class="fa-solid fa-skull-crossbones"></i>
+          </h4>
           <div>
             <h3 *ngIf="this.erros.length < 1">0</h3>
             <div class="row flex-wrap">
@@ -31,10 +35,10 @@
           <tr>
             <td *ngFor="let letra of palavra.separada">
               <span *ngIf="palavra.acertadas[palavra.inteira.indexOf(letra)]">
-                {{ letra }}
+                <h3>{{ letra }}</h3>
               </span>
               <span *ngIf="!palavra.acertadas[palavra.inteira.indexOf(letra)]">
-                <i class="fa-solid fa-xmark"></i>
+                <h3><i class="fa-solid fa-xmark"></i></h3>
               </span>
             </td>
           </tr>
