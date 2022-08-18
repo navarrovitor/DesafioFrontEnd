@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { IWord } from './word';
 
 @Component({
   selector: 'gg-word',
   templateUrl: './word.component.html',
-  styleUrls: ['./word.component.css'],
+  // styleUrls: ['./word.component.css'],
 })
 export class WordComponent implements OnInit {
   dicionario: string[] = ['BANANA', 'AVESTRUZ', 'MACACO', 'COMPUTADOR'];
@@ -34,7 +35,16 @@ export class WordComponent implements OnInit {
     this.chutes = this.tamanhoPalavra * 2;
   }
 
+  onSubmit(input: NgForm) {
+    this.confereLetra(input.value.tentativa);
+    input.resetForm();
+  }
+
   confereLetra(letra: string) {
+    if (letra === '') {
+      alert('Insira uma letra');
+      return;
+    }
     letra = letra.toUpperCase();
     const indices = [
       ...this.palavra.inteira.matchAll(new RegExp(letra, 'gi')),
