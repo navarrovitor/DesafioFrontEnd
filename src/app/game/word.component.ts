@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IWord } from './word';
@@ -10,6 +10,7 @@ import { WordService } from './word.service';
   templateUrl: './word.component.html',
 })
 export class WordComponent implements OnInit {
+  // 
   dicionario: string[] = dicionario;
   palavra: IWord = { inteira: '', separada: [], acertadas: [] };
   tamanhoPalavra: number = 0;
