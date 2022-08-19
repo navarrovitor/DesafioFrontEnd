@@ -43,13 +43,13 @@
         </a>
       </div>
       <div *ngIf="newGame">
-        <div class="text-center d-flex justify-content-around">
+        <div class="text-center">
           <a
             *ngFor="let level of levels"
             (click)="setDificuldade(level)"
             routerLinkActive="active"
             routerLink="/game"
-            class="btn btn-outline-primary text-decoration-none"
+            class="btn btn-outline-primary text-decoration-none mx-4"
             >{{ level }}</a
           >
         </div>
