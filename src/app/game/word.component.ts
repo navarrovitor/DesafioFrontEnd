@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IWord } from './word';
 import * as dicionario from '../_files/dicionario.json';
+import { WordService } from './word.service';
 
 @Component({
   selector: 'gg-word',
@@ -15,7 +16,7 @@ export class WordComponent implements OnInit {
   chutes: number = 50;
   erros: string[] = [];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private wordService: WordService) {}
 
   ngOnInit(): void {
     this.initializeIWord();
@@ -31,6 +32,7 @@ export class WordComponent implements OnInit {
     this.palavra.acertadas = new Array(this.palavra.separada.length).fill(
       false
     );
+    this.wordService.setPalavra(this.palavra);
   }
 
   getWord() {
@@ -45,7 +47,7 @@ export class WordComponent implements OnInit {
 
   confereLetra(letra: string) {
     if (
-      ['', null].includes(letra) ||
+      !/^[a-zA-Z]+$/.test(letra) ||
       this.erros.includes(letra.toUpperCase())
     ) {
       alert('Você precisa inserir uma letra nova!');

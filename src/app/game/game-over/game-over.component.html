@@ -6,7 +6,9 @@
     <div class="container-fluid">
       <div class="text-center">
         <div *ngIf="!win">
-          <h3>Você não conseguiu acertar a palavra</h3>
+          <h3>
+            Seus chutes acabaram, a palavra certa era {{ palavra?.inteira }}
+          </h3>
           <h3><i class="fa-solid fa-heart-crack"></i></h3>
           <h5>Mas não se preocupe!</h5>
           <h5>Você pode tentar de novo se quiser</h5>
