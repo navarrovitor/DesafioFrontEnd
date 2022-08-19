@@ -1,6 +1,7 @@
 {
   "name": "desafio-front-end",
   "version": "0.0.0",
+  "homepage": "https://navarrovitor.github.io/DesafioFrontEnd",
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o",
