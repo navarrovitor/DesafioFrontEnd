@@ -38,8 +38,9 @@
                 <h3>{{ letra }}</h3>
               </span>
               <span *ngIf="!palavra.acertadas[palavra.inteira.indexOf(letra)]">
-                <h3><i class="fa-solid fa-xmark"></i></h3>
+                <h3><i class="fa-solid fa-question"></i></h3>
               </span>
+              <h3><i class="fa-solid fa-minus"></i></h3>
             </td>
           </tr>
         </tbody>
