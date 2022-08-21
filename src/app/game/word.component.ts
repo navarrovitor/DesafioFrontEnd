@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IWord } from './word';
@@ -10,9 +10,10 @@ import { WordService } from './word.service';
   templateUrl: './word.component.html',
 })
 export class WordComponent implements OnInit {
-  // 
-  dicionario: string[] = dicionario;
+  dicionarioEscolhido: string[][] = dicionario;
   palavra: IWord = { inteira: '', separada: [], acertadas: [] };
+  dificuldades = ['Fácil', 'Médio', 'Difícil'];
+  dificuldade: number = 0;
   tamanhoPalavra: number = 0;
   chutes: number = 50;
   erros: string[] = [];
@@ -25,10 +26,11 @@ export class WordComponent implements OnInit {
   }
 
   initializeIWord() {
+    this.wordService.dificuldadeEscolhida$.subscribe(
+      (d) => (this.dificuldade = this.dificuldades.indexOf(d))
+    );
     this.palavra.inteira =
-      this.dicionario[
-        Math.floor(Math.random() * this.dicionario.length - 1) + 1
-      ];
+      this.dicionarioEscolhido[this.dificuldade][this.randomChoice()];
     this.palavra.separada = this.palavra.inteira.split('');
     this.palavra.acertadas = new Array(this.palavra.separada.length).fill(
       false
@@ -79,5 +81,13 @@ export class WordComponent implements OnInit {
     ganhou
       ? this.router.navigate(['/gameover/win'])
       : this.router.navigate(['/gameover/lose']);
+  }
+
+  randomChoice(): number {
+    return (
+      Math.floor(
+        Math.random() * this.dicionarioEscolhido[this.dificuldade].length - 1
+      ) + 1
+    );
   }
 }
