@@ -1,27 +1,63 @@
-# DesafioFrontEnd
+# Adivinhe
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.2.
+Um jogo de adivinhação de palavras com diferentes dificuldades.
+Uma single page application criada para demonstrar meus conhecimentos no framework Angular.
+[Acesse o jogo](https://navarrovitor.github.io/DesafioFrontEnd/game)
 
-## Development server
+## Screenshots
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Home
 
-## Code scaffolding
+![App Screenshot](https://i.imgur.com/u0NJTVel.jpg)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Escolha de dificuldade
 
-## Build
+![App Screenshot](https://i.imgur.com/l2BFV0dl.jpg)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Telas do jogo
 
-## Running unit tests
+![App Screenshot](https://i.imgur.com/d8k14aYl.jpg)
+![App Screenshot](https://i.imgur.com/WEi2neQl.jpg)
+![App Screenshot](https://i.imgur.com/jVHTINml.jpg)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Telas de Game over
 
-## Running end-to-end tests
+![App Screenshot](https://i.imgur.com/k4a3jbXl.jpg)
+![App Screenshot](https://i.imgur.com/AGSVzMtl.jpg)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Para rodar localmente
 
-## Further help
+Clone o projeto
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+  git clone https://github.com/navarrovitor/DesafioFrontEnd
+```
+
+Vá até a pasta do arquivo
+
+```bash
+  cd DesafioFrontEnd
+```
+
+Instale as dependências
+
+```bash
+  npm install
+```
+
+Inicie o servidor
+
+```bash
+  npm start
+```
+
+## Tech Stack
+
+Angular, Typescript, Javascript, HTML, CSS
+
+**Dependencies:**
+Font Awesome, Bootstrap, RxJs
+
+## Autor
+
+- [@navarrovitor](https://www.github.com/navarrovitor)
