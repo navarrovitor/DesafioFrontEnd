@@ -18,9 +18,10 @@ export class GameOverComponent implements OnInit {
     private wordService: WordService
   ) {}
 
+  // Determina a palavra que aparece se o jogador perdeu e mostra o HTML de acordo
   ngOnInit(): void {
     this.wordService.palavraEscolhida$.subscribe((p) => {
-      this.palavra = p;
+      this.palavra = p[0];
     });
     if (this.route.snapshot.paramMap.get('status') === 'win') {
       this.title = 'Parabéns!';
@@ -30,6 +31,7 @@ export class GameOverComponent implements OnInit {
     }
   }
 
+  // Botão back
   onBack() {
     this.router.navigate(['/welcome']);
   }

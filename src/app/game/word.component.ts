@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IWord } from './word';
-import * as dicionario from '../_files/dicionario.json';
 import { WordService } from './word.service';
 
 @Component({
@@ -10,56 +9,62 @@ import { WordService } from './word.service';
   templateUrl: './word.component.html',
 })
 export class WordComponent implements OnInit {
-  dicionarioEscolhido: string[][] = dicionario;
   palavra: IWord = { inteira: '', separada: [], acertadas: [] };
-  dificuldades = ['Fácil', 'Médio', 'Difícil'];
-  dificuldade: number = 0;
   tamanhoPalavra: number = 0;
-  chutes: number = 50;
+  chutes!: number;
   erros: string[] = [];
 
   constructor(private router: Router, private wordService: WordService) {}
 
   ngOnInit(): void {
-    this.initializeIWord();
-    this.getWord();
+    this.escolhePalavra();
   }
 
-  initializeIWord() {
-    this.wordService.dificuldadeEscolhida$.subscribe(
-      (d) => (this.dificuldade = this.dificuldades.indexOf(d))
-    );
-    this.palavra.inteira =
-      this.dicionarioEscolhido[this.dificuldade][this.randomChoice()];
+  // Chama o word service, que determina a palavra e o número de chutes que o jogador terá
+  // Depois de receber a palavra, faz um array com cada letra da mesma e também
+  // inicia o array de letras acertadas com false
+  escolhePalavra() {
+    this.wordService.palavraEscolhida$.subscribe((p) => {
+      this.palavra.inteira = String(p[0]);
+      this.chutes = p[1];
+    });
     this.palavra.separada = this.palavra.inteira.split('');
     this.palavra.acertadas = new Array(this.palavra.separada.length).fill(
       false
     );
-    this.wordService.setPalavra(this.palavra);
   }
 
-  getWord() {
-    this.tamanhoPalavra = this.palavra.separada.length;
-    this.chutes = this.tamanhoPalavra * 2;
-  }
-
+  // Manuseia o submit da letra que o jogador tenta
   onSubmit(input: NgForm) {
     this.confereLetra(input.value.tentativa);
     input.resetForm();
   }
 
+  // Faz a conferência de cada letra que o jogador tenta
   confereLetra(letra: string) {
+    // Confere se:
+    // 1. Já tentou essa letra
+    // 2. Não é um símbolo ou um número
     if (
       !/^[a-zA-Z]+$/.test(letra) ||
-      this.erros.includes(letra.toUpperCase())
+      this.erros.includes(letra.toUpperCase()) ||
+      this.palavra.acertadas[this.palavra.separada.indexOf(letra.toUpperCase())]
     ) {
       alert('Você precisa inserir uma letra nova!');
       return;
     }
     letra = letra.toUpperCase();
+
+    // Array com cada índice no qual a letra aparece
     const indices = [
       ...this.palavra.inteira.matchAll(new RegExp(letra, 'gi')),
     ].map((a) => a.index);
+
+    // Confere se:
+    // 1. Há algum índice aonde a letra aparece.
+    // Se não houver, o número de chutes é subtraido de 1
+    // Se houver, a letra aparece em cada posição
+    // 2. O jogador acertou todas as letras ou perdeu todas as chances
     if (indices.length === 0) {
       if (!this.erros.includes(letra)) {
         this.erros.push(letra);
@@ -77,17 +82,10 @@ export class WordComponent implements OnInit {
     }
   }
 
+  // Redireciona o jogador para a tela de game over
   fimDeJogo(ganhou: boolean) {
     ganhou
       ? this.router.navigate(['/gameover/win'])
       : this.router.navigate(['/gameover/lose']);
-  }
-
-  randomChoice(): number {
-    return (
-      Math.floor(
-        Math.random() * this.dicionarioEscolhido[this.dificuldade].length - 1
-      ) + 1
-    );
   }
 }
